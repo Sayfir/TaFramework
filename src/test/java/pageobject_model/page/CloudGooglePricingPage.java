@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pageobject_model.test.Helpers;
+import pageobject_model.utils.WaitersUtils;
 
 public class CloudGooglePricingPage extends BasePage {
 
@@ -18,7 +18,7 @@ public class CloudGooglePricingPage extends BasePage {
     }
 
     public CloudGooglePricingPage openPage() {
-        Helpers.waitUntilClickable("//a[@href='https://cloud.google.com/pricing/' and @track-name='seePricing']", driver);
+        WaitersUtils.waitUntilClickable("//a[@href='https://cloud.google.com/pricing/' and @track-name='seePricing']", driver);
         new Actions(driver).click(seePricingLink).build().perform();
         return this;
     }

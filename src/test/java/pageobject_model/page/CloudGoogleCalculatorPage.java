@@ -6,7 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pageobject_model.test.Helpers;
+import pageobject_model.utils.FormFillingUtils;
+import pageobject_model.utils.SwitchingToFrameUtils;
+import pageobject_model.utils.TakingScreenshotUtils;
+import pageobject_model.utils.WaitersUtils;
 
 import java.awt.*;
 import java.io.IOException;
@@ -75,7 +78,7 @@ public class CloudGoogleCalculatorPage extends BasePage {
     }
 
     public CloudGoogleCalculatorPage openPage() {
-        Helpers.waitUntilClickable("//a[@href='https://cloud.google.com/pricing/calculators']", driver);
+        WaitersUtils.waitUntilClickable("//a[@href='https://cloud.google.com/pricing/calculators']", driver);
         calculatorsTab.click();
         return this;
     }
@@ -89,12 +92,12 @@ public class CloudGoogleCalculatorPage extends BasePage {
     }
 
     public CloudGoogleCalculatorPage switchToCalculatorPageFrame() {
-        Helpers.switchToFrame(driver, 0);
+        SwitchingToFrameUtils.switchToFrame(driver, 0);
         return this;
     }
 
     public CloudGoogleCalculatorPage fillInstancesNumberField() {
-        Helpers.fillTextField(driver, "//input[@id='input_52']", instancesNumberField, "4");
+        FormFillingUtils.fillTextField(driver, "//input[@id='input_52']", instancesNumberField, "4");
         return this;
     }
 
@@ -107,28 +110,28 @@ public class CloudGoogleCalculatorPage extends BasePage {
         WebElement element = driver.findElement(By.xpath("//md-select[@id='select_75']"));
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
         javascriptExecutor.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
-        Helpers.choosingElementFromDropdown(driver, "//md-select[@id='select_75']", machineTypeDropdown,
+        FormFillingUtils.choosingElementFromDropdown(driver, "//md-select[@id='select_75']", machineTypeDropdown,
                 "//md-option[@value='CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8']", machineTypeDropdownElement);
         return this;
     }
 
     public CloudGoogleCalculatorPage chooseGpuNumber() throws IOException, AWTException {
-        Helpers.takeScreenshot();
-        Helpers.choosingElementFromDropdown(driver, "//md-select[@placeholder='Number of GPUs']/md-select-value",
+        TakingScreenshotUtils.takeScreenshot();
+        FormFillingUtils.choosingElementFromDropdown(driver, "//md-select[@placeholder='Number of GPUs']/md-select-value",
                 gpuNumberDropdown, "//*[@class='md-select-menu-container md-active md-clickable']//md-option[@value='1']",
                 gpuNumberDropdownElement);
         return this;
     }
 
     public CloudGoogleCalculatorPage chooseGpuType() {
-        Helpers.choosingElementFromDropdown(driver, "//md-select[@placeholder='GPU type']/md-select-value", gpuTypeDropdown,
+        FormFillingUtils.choosingElementFromDropdown(driver, "//md-select[@placeholder='GPU type']/md-select-value", gpuTypeDropdown,
                 "//*[@value='NVIDIA_TESLA_V100']", gpuTypeDropdownElement);
         return this;
     }
 
     public CloudGoogleCalculatorPage chooseLocalSsd() throws InterruptedException {
-        Helpers.waitUntilClickable("//md-select[@placeholder='Local SSD']/md-select-value", driver);
-        Helpers.choosingElementFromDropdown(driver, "//md-select[@placeholder='Local SSD']/md-select-value", localSsdDropdown,
+        WaitersUtils.waitUntilClickable("//md-select[@placeholder='Local SSD']/md-select-value", driver);
+        FormFillingUtils.choosingElementFromDropdown(driver, "//md-select[@placeholder='Local SSD']/md-select-value", localSsdDropdown,
                 "//div[@class='md-select-menu-container md-active md-clickable']//md-option[@value='2']",
                 getLocalSsdDropdownElement);
         return this;
@@ -142,7 +145,7 @@ public class CloudGoogleCalculatorPage extends BasePage {
     }
 
     public CloudGoogleCalculatorPage chooseCommittedUsage() {
-        Helpers.choosingElementFromDropdown(driver, "//md-select[@placeholder='Committed usage']/md-select-value",
+        FormFillingUtils.choosingElementFromDropdown(driver, "//md-select[@placeholder='Committed usage']/md-select-value",
                 committedUsageDropdown, "//*[@class='md-select-menu-container md-active md-clickable']//*[@value='1']",
                 committedUsageDropdownElement);
         return this;
