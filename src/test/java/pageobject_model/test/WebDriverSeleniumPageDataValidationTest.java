@@ -6,28 +6,28 @@ import pageobject_model.page.CloudGoogleCalculatorPage;
 
 public class WebDriverSeleniumPageDataValidationTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke"})
     public void testGetCorrectEstimationValue() throws InterruptedException {
         String estimateResult = new CloudGoogleCalculatorPage(driver)
                 .getEstimatedResult();
         Assert.assertEquals("Total Estimated Cost: USD 1,187.77 per 1 month", estimateResult);
     }
 
-    @Test
+    @Test(groups = {"expanded"})
     public void testGetInstanceTypeCorrectValue() throws InterruptedException {
         String instanceValue = new CloudGoogleCalculatorPage(driver)
                 .getInstanceType();
         Assert.assertEquals("Instance type: n1-standard-8", instanceValue);
     }
 
-    @Test
+    @Test(groups = {"expanded"})
     public void testGetRegionCorrectValue() {
         String regionValue = new CloudGoogleCalculatorPage(driver)
                 .getRegion();
         Assert.assertEquals("Region: Frankfurt", regionValue);
     }
 
-    @Test
+    @Test(groups = {"expanded"})
     public void testGetLocalSsdCorrectValue() {
         String ssdValue = new CloudGoogleCalculatorPage(driver)
                 .getLocalSsd();
