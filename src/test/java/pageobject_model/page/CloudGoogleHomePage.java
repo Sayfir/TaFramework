@@ -2,17 +2,17 @@ package pageobject_model.page;
 
 import org.openqa.selenium.WebDriver;
 
-public class CloudGoogleHomePage extends BasePage {
+import static pageobject_model.service.UrlReader.TESTDATA_HOMEPAGE_URL;
 
-    private static final String HOMEPAGE_URL = "https://cloud.google.com/";
+public class CloudGoogleHomePage extends BasePage {
 
     public CloudGoogleHomePage(WebDriver driver) {
         super(driver);
     }
 
     @Override
-    public CloudGoogleHomePage openPage() throws InterruptedException {
-        driver.get(HOMEPAGE_URL);
+    public CloudGoogleHomePage openPage() {
+        driver.get(TESTDATA_HOMEPAGE_URL);
         driver.manage().window().maximize();
         return this;
     }
