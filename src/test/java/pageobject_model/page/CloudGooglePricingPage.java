@@ -19,6 +19,7 @@ public class CloudGooglePricingPage extends BasePage {
 
     public CloudGooglePricingPage openPage() {
         WaitersUtils.waitUntilClickable("//a[@href='https://cloud.google.com/pricing/' and @track-name='seePricing']", driver);
+        logger.info("Pricing page was opened");
         new Actions(driver).click(seePricingLink).build().perform();
         return this;
     }

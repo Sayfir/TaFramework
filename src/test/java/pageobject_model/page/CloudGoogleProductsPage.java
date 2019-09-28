@@ -26,6 +26,7 @@ public class CloudGoogleProductsPage extends BasePage {
     public CloudGoogleProductsPage openPage() throws InterruptedException {
         productsTab.click();
         seeAllProductsLink.click();
+        logger.info("Products page was opened");
         return this;
     }
 }

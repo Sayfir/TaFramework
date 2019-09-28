@@ -80,6 +80,7 @@ public class CloudGoogleCalculatorPage extends BasePage {
     public CloudGoogleCalculatorPage openPage() {
         WaitersUtils.waitUntilClickable("//a[@href='https://cloud.google.com/pricing/calculators']", driver);
         calculatorsTab.click();
+        logger.info("Calculator page was opened");
         return this;
     }
 

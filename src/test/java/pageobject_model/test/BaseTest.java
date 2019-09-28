@@ -2,12 +2,16 @@ package pageobject_model.test;
 
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import pageobject_model.driver.DriverSingleton;
 import pageobject_model.page.*;
+import pageobject_model.utils.TestListener;
+
 import java.awt.*;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+@Listeners({TestListener.class})
 public abstract class BaseTest extends DriverContainer {
 
     @BeforeTest(alwaysRun = true)
